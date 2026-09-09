@@ -65,12 +65,9 @@ function aistudioMediaPlugin(): Plugin {
 // LINT.ThenChange(//depot/google3/java/com/google/alkali/boq/makersuite/applet_dev_service/templates/initializers/react_theme/vite.config.ts:aistudio_media_plugin)
 
 export default defineConfig(() => {
-  // Base path for GitHub Pages ('/odontops-web/') or root ('/') for custom domain and AI Studio preview
-  const isGitHubActions = process.env.GITHUB_ACTIONS === 'true' || process.env.VITE_BASE_GH === 'true';
-  const base = isGitHubActions ? '/odontops-web/' : '/';
-
   return {
-    base,
+    // Relative base path ensures assets load properly on GitHub Pages (regardless of repo name like /ODONTOTOPS/) and Netlify
+    base: './',
     plugins: [react(), tailwindcss(), aistudioMediaPlugin()],
     resolve: {
       alias: {
