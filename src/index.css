@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-base: #FFFFFF;
+  --color-brand-alt: #F4F6FB;
+  --color-brand-text: #12173A;
+  --color-brand-primary: #1E2A6E;
+  --color-brand-secondary: #7A2E8C;
+  --color-brand-purple: #7A2E8C;
+  --color-brand-navy: #1E2A6E;
+  
+  --font-heading: 'Sora', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    color: #12173A;
+    background-color: #FFFFFF;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+  }
+
+  body {
+    font-family: var(--font-body);
+    color: #12173A;
+    background-color: #FFFFFF;
+  }
+}
+
+/* Accessible focus styling */
+:focus-visible {
+  outline: 2px solid #7A2E8C;
+  outline-offset: 2px;
+}
+
+/* Animations that are purely additive; content remains 100% visible by default */
+@keyframes continuousScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-carousel-loop {
+  display: flex;
+  width: max-content;
+  animation: continuousScroll 25s linear infinite;
+}
+
+.animate-carousel-loop:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-carousel-loop {
+    animation: none;
+  }
+}
